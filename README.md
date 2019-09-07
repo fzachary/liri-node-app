@@ -20,3 +20,28 @@ Each command produces different search results:
 3. node liri.js movie-this (movie name) will return data about the searched movie, including the title of the movie, the year of production, the movie's IMDB rating and Rotten Tomatoes rating, the country in which it was produced, the language of the movie's dialogue, a brief plot synopsis, and a list of featured actors/actresses in the movie.
 4. node liri.js do-what-it-says will print the results of the "spotify-this-song" command using "I Want It That Way" as the search parameter.
 
+### Code
+
+#### concert-this
+
+This command used the Bands In Town API. An axios.get command sent a request to the server, and the results were logged to the console. Moment.js was used to reformat the returned concert dates.
+
+#### spotify-this-song
+
+This command used the Spotify API. A request using the node-spotify-api package command spotify.request was sent to the Spotify server, and the results were logged to the console.
+
+#### movie-this
+
+This command used the OMDB API. This command also uses an axios.get request sent to the OMDB server, and the results were logged to the console.
+
+#### do-what-it-says
+
+This command pulled its input parameters from a local file 'random.txt', and then uses those parameters, resulting in a spotify-this-song command for "I Want It That Way."
+
+#### Switch Statement
+
+A switch statement was used to capture the user's command line input. This allowed LIRI to run the specific command entered by the user and access the appropriate function.
+
+#### Local and Linked Files
+
+LIRI required installation of several NPM packages, including axios, node-spotify-api, and moment. It also required the linkage of the local file system.

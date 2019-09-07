@@ -20,7 +20,8 @@ var fs = require('fs');
 
 // Variables required for storing user-generated input
 var action = process.argv[2];
-var input = process.argv[3];
+// Adjusting the user input
+var input = process.argv.slice(3).join(" ");
 
 // Switch statement for app function control
 switch(action) {
@@ -44,16 +45,17 @@ function concertThis() {
     axios.get("https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp")
     .then(function(data) {
         // Iterate over the length of the returned array, and publish the results
-        for ( var i = 0; i < data.data.length; i++ ) {
-            var venueName = data.data[i].venue.name;
+        for ( var i = 0; i < 5; i++ ) {
             var venuePlace = data.data[i].venue.city + ", " + data.data[i].venue.region + ", " + data. data[i].venue.country;
             var eventDate = data.data[i].datetime;
             // Split the datetime data into an array
             var splitDate = eventDate.split("T");
             // Format the date using Moment
             var formDate = moment(splitDate[0], "YYYY-MM-DD").format("MM-DD-YYYY");
-            var concertResults = "------------" + "\nVenue: " + venueName + "\nLocation: " + venuePlace + "\nDate: " + formDate;
-        console.log(concertResults);
+            console.log("------------");
+            console.log("Venue: " + data.data[i].venue.name);
+            console.log("Location: " + venuePlace);
+            console.log("Date: " + formDate);
         }
     })
     // If there is an error, log it to the console
@@ -72,9 +74,16 @@ function spotifyThis(input) {
             spotify.search({ type: 'track', query: input })
             .then(function(data) {
                 // Iterate over the length of the returned array, and publish the results
-                for ( var i = 0; i < data.tracks.items.length; i++ ) {
-                    var spotifyResults = "------------" + "\nArtist(s): " + data.tracks.items[i].artists[0].name + "\nSong: " + data.tracks.items[i].name + "\nAlbum: " + data.tracks.items[i].album.name + "\nPreview: " + data.tracks.items[i].preview_url;
-                    console.log(spotifyResults);
+                for ( var i = 0; i < 5; i++ ) {
+                    console.log("------------");
+                    console.log("Artist(s): " + data.tracks.items[i].artists[0].name);
+                    console.log("Song: " + data.tracks.items[i].name);
+                    console.log("Album: " + data.tracks.items[i].album.name);
+                    if(data.tracks.items[i].preview_url == null) {
+                        console.log("Unfortunately, there is no preview URL for this track.");
+                    } else {
+                        console.log("Preview URL: " + data.tracks.items[i].preview_url);
+                    }
                 }
             })
             // If there is an error, log it to the console
@@ -103,14 +112,26 @@ function movieThis(input) {
             var actors = data.data.Actors;
             // Conditional for the case in which Rotten Tomatoes data does not exist
             if(data.data.Ratings.length <= 1) {
-                var movieInfo = "------------" + "\nTitle: " + title + "\nYear of Production: " + year + "\nIMDB Rating: " + imdb + "\nUnfortunately, this film has not been rated by Rotten Tomatoes" + "\nProduced in: " + country + "\nLanguage: " + language + "\nMovie Plot: " + plot + "\nFeatured Actors: " + actors;
-                // Output
-                console.log(movieInfo);
+                console.log("------------");
+                console.log("Title: " + title);
+                console.log("Year Of Production: " + year);
+                console.log("IMDB Rating: " + imdb);
+                console.log("Unfortunately, this film has not been rated by Rotten Tomatoes.");
+                console.log("Filming Location: " + country);
+                console.log("Language: " + language);
+                console.log("Plot: " + plot);
+                console.log("Featured Actors: " + actors);
             } else if (data.data.Ratings[1].Source === "Rotten Tomatoes") {
                 var rt = data.data.Ratings[1].Value;
-                var movieInfo = "------------" + "\nTitle: " + title + "\nYear of Production: " + year + "\nIMDB Rating: " + imdb + "\nRotten Tomatoes Rating: " + rt + "\nProduced in: " + country + "\nLanguage: " + language + "\nMovie Plot: " + plot + "\nFeatured Actors: " + actors;
-                // Output
-                console.log(movieInfo);
+                console.log("------------");
+                console.log("Title: " + title);
+                console.log("Year Of Production: " + year);
+                console.log("IMDB Rating: " + imdb);
+                console.log("Rotten Tomatoes Rating: " + rt);
+                console.log("Filming Location: " + country);
+                console.log("Language: " + language);
+                console.log("Plot: " + plot);
+                console.log("Featured Actors: " + actors);
             }
         })
         // If there is an error, log it to the console
