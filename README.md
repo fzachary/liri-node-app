@@ -57,3 +57,7 @@ LIRI required installation of several NPM packages, including axios, node-spotif
 # Technologies Used
 
 Node.js, NPM Axios Package (for HTTP server requests), NPM node-spotify-api Package (Spotify API), NPM Moment.js Package
+
+# Contributions
+
+Please contact me if you would like to contribute.
