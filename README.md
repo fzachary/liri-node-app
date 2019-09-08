@@ -53,3 +53,7 @@ A switch statement was used to capture the user's command line input. This allow
 #### Local and Linked Files
 
 LIRI required installation of several NPM packages, including axios, node-spotify-api, and moment. It also required the linkage of the local file system.
+
+# Technologies Used
+
+Node.js, NPM Axios Package (for HTTP server requests), NPM node-spotify-api Package (Spotify API), NPM Moment.js Package
