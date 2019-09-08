@@ -44,7 +44,7 @@ This command used the OMDB API. This command also uses an axios.get request sent
 
 This command pulled its input parameters from a local file 'random.txt', and then uses those parameters, resulting in a spotify-this-song command for "I Want It That Way."
 
-![](images/liri-do-what-it-says)
+![](images/liri-do-what-it-says.png)
 
 #### Switch Statement
 
