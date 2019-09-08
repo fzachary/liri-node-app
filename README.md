@@ -26,17 +26,25 @@ Each command produces different search results:
 
 This command used the Bands In Town API. An axios.get command sent a request to the server, and the results were logged to the console. Moment.js was used to reformat the returned concert dates.
 
+![](images/liri-concert-this.png)
+
 #### spotify-this-song
 
 This command used the Spotify API. A request using the node-spotify-api package command spotify.request was sent to the Spotify server, and the results were logged to the console.
+
+![](images/liri-spotify-this-song.png)
 
 #### movie-this
 
 This command used the OMDB API. This command also uses an axios.get request sent to the OMDB server, and the results were logged to the console.
 
+![](images/liri-movie-this.png)
+
 #### do-what-it-says
 
 This command pulled its input parameters from a local file 'random.txt', and then uses those parameters, resulting in a spotify-this-song command for "I Want It That Way."
+
+![](images/liri-do-what-it-says)
 
 #### Switch Statement
 
